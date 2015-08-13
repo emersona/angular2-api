@@ -31,7 +31,7 @@ System.register("index", ["angular2/angular2"], function($__export) {
         }, {});
       }();
       Object.defineProperty(MyApp, "annotations", {get: function() {
-          return [new Component({selector: 'my-app'}), new Template({url: 'app.html'})];
+          return [new Component({selector: 'my-app'}), new Template({url: 'index.html'})];
         }});
     }
   };

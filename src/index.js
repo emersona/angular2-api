@@ -1,7 +1,7 @@
 import {Component, Template} from 'angular2/angular2';
 
 @Component({selector: 'my-app'})
-@Template({url: 'app.html'})
+@Template({url: 'index.html'})
 class MyApp {  
   constructor() {
     this.firstName = 'John';
