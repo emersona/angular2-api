@@ -1,6 +1,6 @@
-System.register("index", ["angular2/angular2"], function($__export) {
+System.register("index-old", ["angular2/angular2"], function($__export) {
   "use strict";
-  var __moduleName = "index";
+  var __moduleName = "index-old";
   var Component,
       Template,
       MyApp;
@@ -15,6 +15,7 @@ System.register("index", ["angular2/angular2"], function($__export) {
           this.firstName = 'John';
           this.lastName = 'Doe';
           this.updateFullname();
+          getData();
         }
         return ($traceurRuntime.createClass)(MyApp, {
           updateFullname: function() {
@@ -25,8 +26,14 @@ System.register("index", ["angular2/angular2"], function($__export) {
             this.updateFullname();
           },
           lastNameChanged: function($event, last) {
+            alert("wtf");
             this.lastName = last.value;
             this.updateFullname();
+          },
+          getData: function() {
+            return this.http.get('http://localhost:3333/api/questions/').toRx().map(function(res) {
+              return res.json();
+            });
           }
         }, {});
       }();

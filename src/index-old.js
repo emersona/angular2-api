@@ -7,6 +7,7 @@ class MyApp {
     this.firstName = 'John';
     this.lastName = 'Doe';
     this.updateFullname();
+    getData()
   }
   updateFullname(){
     this.fullName = this.firstName + " " + this.lastName;
@@ -16,7 +17,16 @@ class MyApp {
     this.updateFullname();
   }
   lastNameChanged($event, last){
+    alert("wtf");
     this.lastName = last.value;
     this.updateFullname();
   }
+  // Get request and serialize the result to JSON
+  getData() {
+    return this.http.get('http://localhost:3333/api/questions/')
+      .toRx()
+      .map(res => res.json());
+  }
+
+
 }
