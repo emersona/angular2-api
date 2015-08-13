@@ -26,4 +26,13 @@ var MyAppComponent = (function () {
     ], MyAppComponent);
     return MyAppComponent;
 })();
+var GetWeatherData = (function () {
+    function GetWeatherData() {
+        console.log(this.http.get('http://api.wunderground.com/api/6dcd84d359914e7c/conditions/q/MI/Detroit.json')
+            .toRx()
+            .map(function (res) { return res.json(); }));
+    }
+    return GetWeatherData;
+})();
 angular2_1.bootstrap(MyAppComponent);
+angular2_1.bootstrap(GetWeatherData);

@@ -15,4 +15,13 @@ class MyAppComponent {
   }
 }
 
+class GetWeatherData {
+  constructor() {
+    console.log(this.http.get('http://api.wunderground.com/api/6dcd84d359914e7c/conditions/q/MI/Detroit.json')
+      .toRx()
+      .map(res => res.json()));
+  }
+}
+
 bootstrap(MyAppComponent);
+bootstrap(GetWeatherData);
