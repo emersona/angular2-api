@@ -10,29 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var angular2_1 = require('angular2/angular2');
-// Annotation section
-var MyAppComponent = (function () {
-    function MyAppComponent() {
-        this.name = 'Alice';
+var weatherData_1 = require('weatherData');
+var App = (function () {
+    function App(weatherData) {
+        weatherData.getData();
+        // console.log("wtf");
+        // this.http = http;
+        // console.log("wtf part deux");
+        // console.log(http.get('http://api.wunderground.com/api/6dcd84d359914e7c/conditions/q/MI/Detroit.json')
+        //   .toRx()
+        //   .map(res => res.json());
+        // console.log(weatherData.getData().subscribe(res => console.log(res)));
+        // console.log(weatherData.getData().subscribe(res => console.log(res)));
+        // weatherData.getQuestionsFeed().subscribe(res => console.log(res));
+        // weatherData.createQuestion({'foo': 'bar'});
     }
-    MyAppComponent = __decorate([
+    App = __decorate([
         angular2_1.Component({
-            selector: 'my-app'
+            selector: 'my-app',
+            appInjector: [weatherData_1.WeatherData]
         }),
         angular2_1.View({
-            template: '<h1>Hello {{ name }}</h1>'
+            directives: [angular2_1.coreDirectives],
+            template: "\n  <div *ng-if=\"questions\">\n    {{questions | json}}\n  </div>\n  "
         }), 
-        __metadata('design:paramtypes', [])
-    ], MyAppComponent);
-    return MyAppComponent;
+        __metadata('design:paramtypes', [weatherData_1.WeatherData])
+    ], App);
+    return App;
 })();
-var GetWeatherData = (function () {
-    function GetWeatherData() {
-        console.log(this.http.get('http://api.wunderground.com/api/6dcd84d359914e7c/conditions/q/MI/Detroit.json')
-            .toRx()
-            .map(function (res) { return res.json(); }));
-    }
-    return GetWeatherData;
-})();
-angular2_1.bootstrap(MyAppComponent);
-angular2_1.bootstrap(GetWeatherData);
+exports.App = App;
+angular2_1.bootstrap(App);

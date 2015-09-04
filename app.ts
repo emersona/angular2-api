@@ -1,27 +1,37 @@
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, View, bootstrap, coreDirectives} from 'angular2/angular2';
+import {WeatherData} from 'weatherData';
 
-// Annotation section
 @Component({
-  selector: 'my-app'
+  selector: 'my-app',
+  appInjector: [WeatherData]
 })
+
 @View({
-  template: '<h1>Hello {{ name }}</h1>'
+  directives: [coreDirectives],
+  template: `
+  <div *ng-if="questions">
+    {{questions | json}}
+  </div>
+  `
 })
-// Component controller
-class MyAppComponent {
-  name: string;
-  constructor() {
-    this.name = 'Alice';
+
+// @Injectable()
+
+export class App {
+  http;
+  constructor(weatherData:WeatherData) {
+    weatherData.getData();
+    // console.log("wtf");
+    // this.http = http;
+    // console.log("wtf part deux");
+    // console.log(http.get('http://api.wunderground.com/api/6dcd84d359914e7c/conditions/q/MI/Detroit.json')
+    //   .toRx()
+    //   .map(res => res.json());
+    // console.log(weatherData.getData().subscribe(res => console.log(res)));
+    // console.log(weatherData.getData().subscribe(res => console.log(res)));
+    // weatherData.getQuestionsFeed().subscribe(res => console.log(res));
+    // weatherData.createQuestion({'foo': 'bar'});
   }
 }
 
-class GetWeatherData {
-  constructor() {
-    console.log(this.http.get('http://api.wunderground.com/api/6dcd84d359914e7c/conditions/q/MI/Detroit.json')
-      .toRx()
-      .map(res => res.json()));
-  }
-}
-
-bootstrap(MyAppComponent);
-bootstrap(GetWeatherData);
+bootstrap(App);
