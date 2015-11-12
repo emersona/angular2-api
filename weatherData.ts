@@ -13,7 +13,7 @@ export class WeatherData {
     this.http = http;
     console.log("wtf2");
   }
-
+  //  TESTING REBASE!!!!!!
   // Get request and serialize the result to JSON
   getData() {
     console.log("get data");
