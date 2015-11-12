@@ -35,6 +35,7 @@ export class WeatherData {
   }
 
   // Create an Observable from event
+  // REMOVE THIS LATER
   getQuestionsFeed() {
     var socket = io('http://localhost:3333');
     return Observable
