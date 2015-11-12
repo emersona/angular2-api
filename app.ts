@@ -1,3 +1,5 @@
+/// <reference path="typings/angular2/angular2.d.ts" />
+
 import {Component, View, bootstrap, coreDirectives} from 'angular2/angular2';
 import {WeatherData} from 'weatherData';
 
@@ -18,7 +20,6 @@ import {WeatherData} from 'weatherData';
 // @Injectable()
 
 export class App {
-  http;
   constructor(weatherData:WeatherData) {
     weatherData.getData();
     // console.log("wtf");
